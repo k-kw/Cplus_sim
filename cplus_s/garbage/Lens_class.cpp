@@ -48,8 +48,8 @@ void My_Lens::a_Lens(int approx, double f, double lamda, double d)
 				dx = ((double)j - (lx / 2)) * d;
 				dy = ((double)i - (ly / 2)) * d;
 
-				lens_Re[i * lx + j] = cos((-2 * M_PI / lamda) * (sqr(dx) + sqr(dy)) / (2 * f));
-				lens_Im[i * lx + j] = sin((-2 * M_PI / lamda) * (sqr(dx) + sqr(dy)) / (2 * f));
+				lens_Re[i * lx + j] = cos((-2 * M_PI / lamda) * sqrt(sqr(dx) + sqr(dy) + sqr(f)));
+				lens_Im[i * lx + j] = sin((-2 * M_PI / lamda) * sqrt(sqr(dx) + sqr(dy) + sqr(f)));
 			}
 		}
 

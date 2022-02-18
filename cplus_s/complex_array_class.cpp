@@ -441,8 +441,8 @@ void My_LensArray::Lens()
 				dx = ((double)j - (x / 2)) * d;
 				dy = ((double)i - (y / 2)) * d;
 
-				this->Re[i * x + j] = cos((-2 * M_PI / lamda) * (sqr(dx) + sqr(dy)) / (2 * f));
-				this->Im[i * x + j] = sin((-2 * M_PI / lamda) * (sqr(dx) + sqr(dy)) / (2 * f));
+				this->Re[i * x + j] = cos((-2 * M_PI / lamda) * sqrt(sqr(dx) + sqr(dy) + sqr(f)));
+				this->Im[i * x + j] = sin((-2 * M_PI / lamda) * sqrt(sqr(dx) + sqr(dy) + sqr(f)));
 			}
 		}
 
