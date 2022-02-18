@@ -56,7 +56,7 @@ public:
 };
 
 
-//複素配列クラスを継承した２次元配列クラス
+//複素配列クラスを継承した２次元複素配列クラス
 
 class My_ComArray_2D : public My_Complex_Array
 {
@@ -85,4 +85,7 @@ public:
 	//inとoutは、Hの縦横半分。入力データをそのままinにすればOK、
 	void kaku(My_ComArray_2D* out, My_ComArray_2D* in);
 };
+
+
+//2次元複素配列クラスを継承したレンズ配列クラス
 
