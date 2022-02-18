@@ -1,6 +1,6 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
-#include <iostream>
+//#include <iostream>
 #include "complex_array_class.h"
 #include "my_all.h"
 #include "Fft_class.h"
@@ -25,7 +25,6 @@ My_Complex_Array::My_Complex_Array(int s)
 
 My_Complex_Array::~My_Complex_Array()
 {
-	std::cout << "delete" << std::endl;
 	delete[]Re;
 	delete[]Im;
 }

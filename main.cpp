@@ -4,7 +4,7 @@
 
 #include "my_all.h"
 #include "Bmp_class_dll.h"
-#include "Lens_class_dll.h"
+//#include "Lens_class_dll.h"
 #include "complex_array_class.h"
 
 #include <opencv2//opencv.hpp>
@@ -20,7 +20,7 @@
 
 //bmpとlensクラスを動的リンク(暗黙的リンク)
 #pragma comment(lib, "Dll_bmp_class.lib")
-#pragma comment(lib, "Dll_lens_class.lib")
+//#pragma comment(lib, "Dll_lens_class.lib")
 
 //余分な警告削除
 #pragma warning(disable:4996)
@@ -44,6 +44,7 @@ using namespace cv;
 #define b 0.03 //伝搬距離2
 #define f 0.03 //焦点距離
 #define resolution pow(2, 8) //解像度
+#define approx true    //レンズの式の近似
 
 //ファイルパス
 string binpath = "../../dat/bindat/1byte/fm_28_1.dat";
@@ -93,19 +94,6 @@ int main() {
 
     } while (rand_or_lsd != 0 && rand_or_lsd != 1);
 
-
-    //レンズの式近似の確認
-    int approx;
-    if (rand_or_lsd == 1) {
-        do {
-            cout << "\nレンズの式を近似する：0を入力\t近似しない：1を入力\n";
-            cout << " 0 or 1 : "; cin >> approx;
-
-        } while (approx != 0 && approx != 1);
-    }
-
-
-
     //ファイル入力・バイナリストリームオープン
     ifstream ifs(binpath, ios::binary /*| ios::in*/);
     //ファイル出力・バイナリストリームオープン
@@ -116,28 +104,20 @@ int main() {
     //両方オープンできたか確認
     if ((ifs) && (ofs)) {
 
-
-
-        My_Lens* Lens;
-        Lens = new My_Lens(PJRSX, PJRSY);
-
+        My_LensArray* Lens;
+        Lens = new My_LensArray(PJRSX * PJRSY, PJRSX, PJRSY, approx, f, lam, d);
 
         if (rand_or_lsd == 0) {
             //ランダム拡散板
-
-
             Lens->diffuser_Random(0);
 
         }
         else {
             //レンズアレイ拡散板
-            Lens->diffuser_Lensarray(LENS_SIZE, approx, f, lam, d);
+            Lens->diffuser_Lensarray(LENS_SIZE);
 
 
         }
-
-        //Lens->a_Lens(approx, f, lam, d);
-
 
 
         //H配列直接計算
@@ -286,7 +266,7 @@ int main() {
             Ha->kaku(Complex, Complex);
             
             //拡散板X画像
-            Complex->mul_complex(Lens->lens_Re, Lens->lens_Im);
+            Complex->mul_complex(Lens);
 
             //ラインセンサまで伝搬計算
             Hb->kaku(Complex, Complex);
