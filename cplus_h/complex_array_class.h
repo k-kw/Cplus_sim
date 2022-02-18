@@ -84,6 +84,13 @@ public:
 	//現在格納されいてるHを使って、指定したinの角スペクトル法を実行後、結果をoutに格納
 	//inとoutは、Hの縦横半分。入力データをそのままinにすればOK、
 	void kaku(My_ComArray_2D* out, My_ComArray_2D* in);
+
+
+	
+	//ランダム拡散板
+	void diffuser_Random(int rand_seed);                                               
+	
+
 };
 
 
@@ -91,6 +98,22 @@ public:
 class My_LensArray :public My_ComArray_2D
 {
 private:
+
 public:
+	bool approx;    //近似
+	double f;       //焦点距離
+	double lamda;   //波長
+	double d;       //画素ピッチ
+
+
+	//コンストラクタ
+	My_LensArray(int s, int x, int y, bool approx, double f, double lamda, double d)
+		:My_ComArray_2D(s, x, y), approx(approx), f(f), lamda(lamda), d(d) {};
+
+	//デストラクタ自動
+
+	void Lens();                           //単一レンズ
+
+	void diffuser_Lensarray(int ls);      //レンズアレイ拡散板
 
 };

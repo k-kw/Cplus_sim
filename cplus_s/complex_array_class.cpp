@@ -395,3 +395,78 @@ void My_ComArray_2D::kaku(My_ComArray_2D* out, My_ComArray_2D* in)
 
 	delete inpad;
 }
+
+
+
+//ランダム位相拡散板
+void My_ComArray_2D::diffuser_Random(int rand_seed)
+{
+	srand(rand_seed);
+	double random_num;
+
+	for (int i = 0; i < y; i++) {
+		for (int j = 0; j < x; j++) {
+
+			random_num = rand();
+			this->Re[i * x + j] = cos(((double)random_num / RAND_MAX) * 2 * M_PI);
+			this->Im[i * x + j] = sin(((double)random_num / RAND_MAX) * 2 * M_PI);
+		}
+	}
+}
+
+
+//--------------------------------------------LENS-------------------------------------------
+
+void My_LensArray::Lens()
+{
+	if (approx) {
+		//近似
+		for (int i = 0; i < y; i++) {
+			for (int j = 0; j < x; j++) {
+				double dx, dy;
+				dx = ((double)j - (x / 2)) * d;
+				dy = ((double)i - (y / 2)) * d;
+
+				this->Re[i * x + j] = cos((-2 * M_PI / lamda) * (sqr(dx) + sqr(dy)) / (2 * f));
+				this->Im[i * x + j] = sin((-2 * M_PI / lamda) * (sqr(dx) + sqr(dy)) / (2 * f));
+			}
+		}
+
+	}
+	else {
+		//近似なし
+		for (int i = 0; i < y; i++) {
+			for (int j = 0; j < x; j++) {
+				double dx, dy;
+				dx = ((double)j - (x / 2)) * d;
+				dy = ((double)i - (y / 2)) * d;
+
+				this->Re[i * x + j] = cos((-2 * M_PI / lamda) * (sqr(dx) + sqr(dy)) / (2 * f));
+				this->Im[i * x + j] = sin((-2 * M_PI / lamda) * (sqr(dx) + sqr(dy)) / (2 * f));
+			}
+		}
+
+	}
+}
+
+
+void My_LensArray::diffuser_Lensarray(int ls)
+{
+	
+	//微小単一レンズ作成
+	My_LensArray* mini_lens;
+	mini_lens = new My_LensArray(s, ls, ls, approx, f, lamda, d);
+	mini_lens->Lens();
+
+
+	for (int i = 0; i < y; i++) {
+		for (int j = 0; j < x; j++) {
+			this->Re[i * x + j] = mini_lens->Re[(i % ls) * ls + (j % ls)];
+			this->Im[i * x + j] = mini_lens->Im[(i % ls) * ls + (j % ls)];
+		}
+	}
+
+	//微小単一レンズ削除
+	delete mini_lens;
+
+}
