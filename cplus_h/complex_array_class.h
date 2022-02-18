@@ -88,4 +88,9 @@ public:
 
 
 //2次元複素配列クラスを継承したレンズ配列クラス
+class My_LensArray :public My_ComArray_2D
+{
+private:
+public:
 
+};
