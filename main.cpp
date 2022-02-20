@@ -4,7 +4,6 @@
 
 #include "my_all.h"
 #include "Bmp_class_dll.h"
-//#include "Lens_class_dll.h"
 #include "complex_array_class.h"
 
 #include <opencv2//opencv.hpp>
@@ -20,7 +19,6 @@
 
 //bmpとlensクラスを動的リンク(暗黙的リンク)
 #pragma comment(lib, "Dll_bmp_class.lib")
-//#pragma comment(lib, "Dll_lens_class.lib")
 
 //余分な警告削除
 #pragma warning(disable:4996)
@@ -48,7 +46,7 @@ using namespace cv;
 
 //ファイルパス
 string binpath = "../../dat/bindat/1byte/fm_28_1.dat";
-string simpath = "../../dat/simdat/SLM_phase/1byte/random/test_sim4.dat";
+string simpath = "../../dat/simdat/SLM_phase/1byte/random/test_sim5.dat";
 string oriimg = "./origimg/test.bmp";
 string simimg = "./simimg/test.bmp";
 string t = "exp.bmp";
