@@ -4,7 +4,7 @@
 
 #include "my_all.h"
 #include "Bmp_class_dll.h"
-#include "complex_array_class.h"
+#include "complex_array_class_dll.h"
 
 #include <opencv2//opencv.hpp>
 #include <iostream>
@@ -17,8 +17,10 @@
 #pragma comment(lib, "opencv_world454d.lib")
 
 
-//bmpとlensクラスを動的リンク(暗黙的リンク)
+//bmpクラスを動的リンク(暗黙的リンク)
 #pragma comment(lib, "Dll_bmp_class.lib")
+//複素配列クラスを動的リンク(暗黙的リンク)
+#pragma comment(lib, "DllComArray.lib")
 
 //余分な警告削除
 #pragma warning(disable:4996)
@@ -33,7 +35,7 @@ using namespace cv;
 #define PJRSX 960     //SLMでの横画素数(4で割れる整数に限る)
 #define PJRSY 540     //SLMでの縦画素数(4で割れる整数に限る)
 #define short 540     //PJRSYとPJRSXの短辺
-#define N 3       //画像の枚数
+#define N 500       //画像の枚数
 #define LENS_SIZE 60 //拡散板レンズのレンズサイズ
 #define CHECK_NUM N  //シミュレーション画像をチェックする番号
 #define lam 532e-09  //波長
@@ -46,7 +48,7 @@ using namespace cv;
 
 //ファイルパス
 string binpath = "../../dat/bindat/1byte/fm_28_1.dat";
-string simpath = "../../dat/simdat/SLM_phase/1byte/random/test_sim5.dat";
+string simpath = "../../dat/simdat/SLM_phase/1byte/random/test_sim.dat";
 string oriimg = "./origimg/test.bmp";
 string simimg = "./simimg/test.bmp";
 string t = "exp.bmp";
