@@ -2,7 +2,7 @@
 #include <cmath>
 #include <fftw3.h>
 #include <stddef.h>
-#include <Fft_class.h>
+#include "Fft_class.h"
 
 //fftw3はDLLをプロジェクトのフォルダに置いて動的リンクライブラリ（暗黙的リンク）として
 //.defがあるので明示的リンクも可？
