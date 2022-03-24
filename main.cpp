@@ -31,24 +31,39 @@ using namespace cv;
 //パラメータ1
 #define SX 28       //bindat横
 #define SY 28       //bindatの縦
+//
+//#define PJRSX 960     //SLMでの横画素数(4で割れる整数に限る)
+//#define PJRSY 540     //SLMでの縦画素数(4で割れる整数に限る)
+//#define PJRSX 500     //SLMでの横画素数(4で割れる整数に限る)
+//#define PJRSY 500     //SLMでの縦画素数(4で割れる整数に限る)
+#define PJRSX 4096
+#define PJRSY 4096
 
-#define PJRSX 960     //SLMでの横画素数(4で割れる整数に限る)
-#define PJRSY 540     //SLMでの縦画素数(4で割れる整数に限る)
-#define short 540     //PJRSYとPJRSXの短辺
-#define N 500       //画像の枚数
-#define LENS_SIZE 60 //拡散板レンズのレンズサイズ
+#define short 4096
+//#define short 540     //PJRSYとPJRSXの短辺
+//#define short 500     //PJRSYとPJRSXの短辺
+
+#define N 100       //画像の枚数
+//#define LENS_SIZE 60 //拡散板レンズのレンズサイズ
+//#define LENS_SIZE 25
+#define LENS_SIZE 128
+
 #define CHECK_NUM N  //シミュレーション画像をチェックする番号
 #define lam 532e-09  //波長
 #define d 1.496e-05 //画素ピッチ
+//#define d 6e-05
 #define a 0.1 //伝搬距離1
 #define b 0.03 //伝搬距離2
 #define f 0.03 //焦点距離
+//#define a 0.2
+//#define b 3
+//#define f 0.2
 #define resolution pow(2, 8) //解像度
 #define approx true    //レンズの式の近似
 
 //ファイルパス
-string binpath = "../../dat/bindat/1byte/fm_28_1.dat";
-string simpath = "../../dat/simdat/SLM_phase/1byte/random/test_sim.dat";
+string binpath = "../../../../dat/bindat/1byte/fm_28_1.dat";
+string simpath = "../../../../dat/simdat/SLM_phase/1byte/lsd/test_sim.dat";
 string oriimg = "./origimg/test.bmp";
 string simimg = "./simimg/test.bmp";
 string t = "exp.bmp";
