@@ -12,8 +12,11 @@ cplus_hがヘッダをまとめたディレクトリで，includeすると使え
 Bmp_class_dll.h : Dllandlib/bmp_dll_ver2
 
 complex_array_class_dll.h : Dllandlib/complexarray_ver2
+
 #### ----対応関係----
-DllandlibのREADME.mdに，各DLLが持つ機能の概略があります．
+DllandlibのREADME.mdに，各DLLが持つ機能の概略がありますので詳細はそちらをご覧ください．
+
+main.cppにあるとおりopencvを使っています．ほかにもcomplex_array_class_dll.h : Dllandlib/complexarray_ver2/complex_array_class_dll.cppにあるとおりfftwを使っています．
 
 cplus_sは使う必要がないです．
 
