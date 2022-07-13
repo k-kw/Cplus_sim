@@ -34,27 +34,27 @@ using namespace cv;
 //
 //#define PJRSX 960     //SLMでの横画素数(4で割れる整数に限る)
 //#define PJRSY 540     //SLMでの縦画素数(4で割れる整数に限る)
-//#define PJRSX 500     //SLMでの横画素数(4で割れる整数に限る)
-//#define PJRSY 500     //SLMでの縦画素数(4で割れる整数に限る)
-#define PJRSX 4096
-#define PJRSY 4096
+#define PJRSX 500     //SLMでの横画素数(4で割れる整数に限る)
+#define PJRSY 500     //SLMでの縦画素数(4で割れる整数に限る)
+//#define PJRSX 4096
+//#define PJRSY 4096
 
-#define short 4096
+//#define short 4096
 //#define short 540     //PJRSYとPJRSXの短辺
-//#define short 500     //PJRSYとPJRSXの短辺
+#define short 500     //PJRSYとPJRSXの短辺
 
-#define N 100       //画像の枚数
+#define N 2       //画像の枚数
 //#define LENS_SIZE 60 //拡散板レンズのレンズサイズ
-//#define LENS_SIZE 25
-#define LENS_SIZE 128
+#define LENS_SIZE 25
+//#define LENS_SIZE 128
 
 #define CHECK_NUM N  //シミュレーション画像をチェックする番号
 #define lam 532e-09  //波長
-#define d 1.496e-05 //画素ピッチ
-//#define d 6e-05
-#define a 0.1 //伝搬距離1
-#define b 0.03 //伝搬距離2
-#define f 0.03 //焦点距離
+//#define d 1.496e-05 //画素ピッチ
+#define d 6e-05
+#define a 0.2 //伝搬距離1
+#define b 0.2 //伝搬距離2
+#define f 0.2 //焦点距離
 //#define a 0.2
 //#define b 3
 //#define f 0.2
